@@ -175,14 +175,26 @@ public class ArrayAlgorithms {
         int[] shiftedList = new int[numList.length];
         int i = 0;
         for (int num : numList) {
-            i--;
-            if (i == -1)
-            {
-                shiftedList[numList.length - 1] = numList[0];
-                i = numList.length - 1;
-            }
-            else {shiftedList[i] = num;}
+            if (i == 0) {shiftedList[numList.length - 1] = numList[0];}
+            else {shiftedList[i - 1] = num;}
+            i++;
         }
         return shiftedList;
+    }
+
+    public static void shiftLeftModify(int[] numList)
+    {
+        int a = numList[numList.length-1];
+        int b;
+        for (int i = numList.length - 1; i >= 0; i--) {
+            b = a;
+            if (i == 0) {
+                numList[numList.length-1] = b;
+            }
+            else {
+                a = numList[i-1];
+                numList[i-1] = b;
+            }
+        }
     }
 }
